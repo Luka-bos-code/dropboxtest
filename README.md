@@ -91,4 +91,47 @@
       <h2>Final Evaluation</h2>
       <label>Did the box withstand all tests successfully? (Yes/No):<br />
         <input type="text" />
-      </label><
+      </label><br /><br />
+      <label>Summary of issues (if any):<br />
+        <textarea rows="3"></textarea>
+      </label><br /><br />
+      <label>Recommendation for packaging changes:<br />
+        <textarea rows="3"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <div class="no-print">
+    <button onclick="printDocument()">Print Document</button>
+  </div>
+
+  <script>
+    function calculate() {
+      const a = parseFloat(document.getElementById("aInput").value);
+      const b = parseFloat(document.getElementById("bInput").value);
+      if (!isNaN(a) && !isNaN(b)) {
+        const area = a * b;
+        const weight = area * 0.12;
+        document.getElementById("areaOutput").innerText = area.toFixed(2);
+        document.getElementById("weightOutput").innerText = weight.toFixed(2);
+      } else {
+        alert("Please enter both A and B values.");
+      }
+    }
+
+    function printDocument() {
+      const printContent = document.getElementById("formContent");
+      const printWindow = window.open('', '', 'height=600,width=800');
+      printWindow.document.write('<html><head><title>Box Compression Drop Test</title>');
+      printWindow.document.write('<style>body {font-family: Arial, sans-serif;} table, th, td {border: 1px solid #aaa; border-collapse: collapse; padding: 8px;} th {background-color: #f0f0f0;} input, textarea {width: 100%; box-sizing: border-box;} .section {margin-top: 30px;}</style>');
+      printWindow.document.write('</head><body>');
+      printWindow.document.write(printContent.innerHTML);
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      setTimeout(function () {
+        printWindow.print();
+      }, 500); // Delay print to ensure content is fully loaded
+    }
+  </script>
+</body>
+</html>
