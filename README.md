@@ -3,7 +3,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Box Compression Drop Test</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -92,49 +91,4 @@
       <h2>Final Evaluation</h2>
       <label>Did the box withstand all tests successfully? (Yes/No):<br />
         <input type="text" />
-      </label><br /><br />
-      <label>Summary of issues (if any):<br />
-        <textarea rows="3"></textarea>
-      </label><br /><br />
-      <label>Recommendation for packaging changes:<br />
-        <textarea rows="3"></textarea>
-      </label>
-    </div>
-  </div>
-
-  <div class="no-print">
-    <button onclick="downloadPDF()">Export as PDF</button>
-  </div>
-
-  <script>
-    function calculate() {
-      const a = parseFloat(document.getElementById("aInput").value);
-      const b = parseFloat(document.getElementById("bInput").value);
-      if (!isNaN(a) && !isNaN(b)) {
-        const area = a * b;
-        const weight = area * 0.12;
-        document.getElementById("areaOutput").innerText = area.toFixed(2);
-        document.getElementById("weightOutput").innerText = weight.toFixed(2);
-      } else {
-        alert("Please enter both A and B values.");
-      }
-    }
-
-    async function downloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-      const content = document.getElementById("formContent");
-      await doc.html(content, {
-        callback: function (doc) {
-          doc.save("box-drop-test.pdf");
-        },
-        x: 10,
-        y: 10,
-        width: 180,
-        windowWidth: 800
-      });
-    }
-  </script>
-</body>
-</html>
+      </label><
