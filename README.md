@@ -30,14 +30,9 @@
     .no-print {
       margin-top: 20px;
     }
-    .logo {
-      max-width: 150px;
-      margin-bottom: 20px;
-    }
   </style>
 </head>
 <body>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" class="logo" alt="Logo">
   <h1>Box Compression Drop Test</h1>
 
   <div class="section" id="formContent">
@@ -131,7 +126,7 @@
       const doc = new jsPDF();
 
       const content = document.getElementById("formContent");
-      await doc.html(document.body, {
+      await doc.html(content, {
         callback: function (doc) {
           doc.save("box-drop-test.pdf");
         },
